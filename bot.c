@@ -20,7 +20,7 @@ void bot_init(info_player_s infoPlayers[], int tab_binary_color[], int num_playe
 	do
 	{
 		CLEAR();
-		printf("quelle est la difficulté du bot n°%d\n1° easy\n2° medium\n> ", num_player);
+		printf("quelle est la difficulté du bot n°%d\n1° easy\n2° hard\n> ", num_player);
 		choiceNivBot = get_entry("");
 	} while(choiceNivBot!= 1 && choiceNivBot!= 2);
 
@@ -37,7 +37,7 @@ void bot_init(info_player_s infoPlayers[], int tab_binary_color[], int num_playe
 
 int tour_bot(board game, info_player_s info[], int current_player)
 {
-	
+
 	printf("%s%s reflechit ...\n"WHITE, info[current_player-1].color, info[current_player-1].player_name);
 
 	if(strcmp(info[current_player-1].player_name, "Le Petit Bot")==0)
@@ -76,7 +76,7 @@ void bot_medium(board game, int current_player, info_player_s info[])
 	while(1)
 	{
 		get_best_moove(game, current_player, &turnNumber, info);
-		if(make_choice(game, current_player, turnNumber)==0) 
+		if(make_choice(game, current_player, turnNumber)==0)
 		{
 			break;
 		}
@@ -142,7 +142,7 @@ int get_choice(board game, int current_player, int turnNumber, int* turnChoice, 
 								break;
 						}
 
-						else 
+						else
 						{
 							rank++;
 						}
@@ -192,7 +192,7 @@ int get_best_moove(board game, int current_player, int* turnNumber, info_player_
 							*turnNumber=i;
 						}
 					}
-					printf("choix n°%d : (line: %d, column: %d, size: %d)= %d\n", i, dest_line, dest_column, piece_size, rank);
+					//printf("choix n°%d : (line: %d, column: %d, size: %d)= %d\n", i, dest_line, dest_column, piece_size, rank);
 				}
 				if(*turnNumber==i)
 				{
@@ -248,17 +248,17 @@ int get_best_moove(board game, int current_player, int* turnNumber, info_player_
 						printf("prevision");*/
             rankB = -1 * get_best_rank(game_2, next_player(current_player));
 
-						if(get_winner(game_2)==next_player(current_player)) 
+						if(get_winner(game_2)==next_player(current_player))
 						{
 							rankB=-300;
 						}
-						
-						else if(get_winner(game_2)==current_player) 
+
+						else if(get_winner(game_2)==current_player)
 						{
 							rankB=400;
 						}
 
-            if(rankB==-10) 
+            if(rankB==-10)
 						{
 							rankB=0;
 						}
@@ -281,7 +281,7 @@ int get_best_moove(board game, int current_player, int* turnNumber, info_player_
 							*turnNumber=i;
 						}
 					}
-					printf("choix n°%d : (line1: %d, column1: %d,line2: %d, column2: %d) = %d+%d = %d\n", i, source_line, source_column, dest_line, dest_column, rank, rankB, rank+rankB);
+					//printf("choix n°%d : (line1: %d, column1: %d,line2: %d, column2: %d) = %d+%d = %d\n", i, source_line, source_column, dest_line, dest_column, rank, rankB, rank+rankB);
 				}
 			}
 		}
